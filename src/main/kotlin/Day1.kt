@@ -6,7 +6,7 @@ class ListDistance {
   companion object {
     private var inputDelimiter = "   "
     fun readInput(): Pair<ArrayList<Int>, ArrayList<Int>> {
-      val inputStream = this::class.java.getResourceAsStream("/day1/input.txt")?.bufferedReader()?.readLines()
+      val inputStream = this::class.java.getResourceAsStream("/inputs/day1.txt")?.bufferedReader()?.readLines()
       val firstArr = ArrayList<Int>()
       val secondArr = ArrayList<Int>()
       inputStream?.forEach {
