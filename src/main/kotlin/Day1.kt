@@ -1,7 +1,7 @@
 import kotlin.math.abs
 
 
-class ListDistance {
+class Day1 {
 
   companion object {
     private var inputDelimiter = "   "
