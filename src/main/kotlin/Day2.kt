@@ -92,11 +92,8 @@ class Day2 {
                 prevNum = num
                 continue
               }
-              val direction: Int = if (num > prevNum) {
-                1
-              } else {
-                -1
-              }
+              val direction = if (num > prevNum) 1 else -1
+
               val diff = abs(num - prevNum)
               // Make sure the diff stays between 1-3 and direction doesn't change
               if (diff < 1 || diff > 3 || (prevDirection != null && prevDirection != direction)) {
