@@ -5,7 +5,7 @@ class Day3 {
     // Match valid multiplication values or operators
     private val validMultiplicationRegex =
       Regex(
-        "mul\\((?<firstNum>\\d{0,3}),(?<secondNum>\\d{0,3})\\)|(?<operator>do\\(\\)|don't\\(\\))"
+        "mul\\((?<firstNum>\\d{1,3}),(?<secondNum>\\d{1,3})\\)|(?<operator>do\\(\\)|don't\\(\\))"
       )
 
     fun addMultiplications(enableOperators: Boolean) {
