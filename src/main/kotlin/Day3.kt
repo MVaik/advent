@@ -17,7 +17,7 @@ class Day3 {
         var multiplicationEnabled = true
         for (match in matches) {
           val operator = match.groups["operator"]
-          // If we the current match is an operator, set the boolean and skip to next iteration
+          // If the current match is an operator, set the boolean and skip to next iteration
           if (operator != null && enableOperators) {
             multiplicationEnabled = operator.value == "do()"
             continue
