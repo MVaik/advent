@@ -10,10 +10,11 @@ class Day10 {
       foundTrailEnds: MutableSet<Pair<Int, Int>>
     ) {
       val currentPosValue = grid[position.first][position.second].digitToInt()
+      // Return early if our new value isn't prev + 1
       if (currentPosValue != expectedNum) {
         return
       }
-      // If we're on the last number, we found it
+      // If we're on the last number, we found a valid trail
       if (currentPosValue == 9) {
         foundTrailEnds.add(position)
         return
@@ -21,6 +22,7 @@ class Day10 {
       for (direction in Utils.cardinalDirections) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         if (Utils.isPairWithinGridBounds(grid, newPos)) {
+          // Recursively find trails in each direction
           addUniqueTrails(grid, newPos, expectedNum + 1, foundTrailEnds)
         }
       }
@@ -35,7 +37,7 @@ class Day10 {
       if (currentPosValue != expectedNum) {
         return 0
       }
-      // If we're on the last number, we found it
+      // If we're on the last number, return 1 to signify a valid trail
       if (currentPosValue == 9) {
         return 1
       }
@@ -43,6 +45,7 @@ class Day10 {
       for (direction in Utils.cardinalDirections) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         if (Utils.isPairWithinGridBounds(grid, newPos)) {
+          // Count all the valid trails found from this direction
           foundTrails += countValidTrails(grid, newPos, expectedNum + 1)
         }
       }
@@ -55,6 +58,7 @@ class Day10 {
       for (row in input.indices) {
         for (col in input[row].indices) {
           if (input[row][col] == '0') {
+            // Keep track of all the unique 9's we find, as we don't want to count each path that leads to the same 9
             val foundTrails = mutableSetOf<Pair<Int, Int>>()
             for (direction in Utils.cardinalDirections) {
               val newPoint = Pair(row + direction.first, col + direction.second)
@@ -79,6 +83,7 @@ class Day10 {
             for (direction in Utils.cardinalDirections) {
               val newPoint = Pair(row + direction.first, col + direction.second)
               if (Utils.isPairWithinGridBounds(input, newPoint)) {
+                // Sum all valid trails regardless of duplicate 9's
                 sum += countValidTrails(input, newPoint, 1)
               }
             }
