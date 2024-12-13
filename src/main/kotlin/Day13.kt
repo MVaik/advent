@@ -23,6 +23,7 @@ class Day13 {
         }
         data
       }
+
       var tokensSum = 0L
       for (problem in problems) {
         val (firstXValue, secondXValue) = problem["x"]!!
@@ -35,13 +36,20 @@ class Day13 {
         // Linear systems or something idk
         val firstPart = (firstResult * secondYValue - secondResult * secondXValue)
         val secondPart = (firstXValue * secondYValue - firstYValue * secondXValue)
-        // If there's anything remaining after division, the problem is not solvable
-        if (firstPart % secondPart != 0L) {
-          continue
-        }
         val firstCount = firstPart / secondPart
         // Use first count to find the second count
         val secondCount = (firstResult - firstXValue * firstCount) / secondXValue
+        // Make sure the counts work for the expected results
+        if (Pair(
+            firstXValue * firstCount + secondXValue * secondCount,
+            firstYValue * firstCount + secondYValue * secondCount
+          ) != Pair(
+            firstResult,
+            secondResult
+          )
+        ) {
+          continue
+        }
         tokensSum += firstCount * 3 + secondCount
       }
       println("Result: %s".format(tokensSum))
