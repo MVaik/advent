@@ -11,16 +11,17 @@ class Day14 {
     private val robotCoordsRegex = Regex("-?\\d+")
     private const val WIDTH = 101
     private const val HEIGHT = 103
+    private const val IGNORED_X = WIDTH / 2
+    private const val IGNORED_Y = HEIGHT / 2
 
     private fun wrapCoord(input: Int, max: Int): Int {
       // Handle negative values
       return ((input % max) + max) % max
     }
 
-    fun calcSafetyFactor() {
-      val input = Utils.readLines("/inputs/day14.txt") ?: return
-      val iterationCount = 100
-      val robots = input.map { robot ->
+    private fun getRobots(): List<ArrayList<Int>>? {
+      val input = Utils.readLines("/inputs/day14.txt") ?: return null
+      return input.map { robot ->
         // Get all digits in the row
         val matches = robotCoordsRegex.findAll(robot)
         val values = ArrayList<Int>()
@@ -29,38 +30,39 @@ class Day14 {
         }
         values
       }
-      val movedRobots = robots.map { robot ->
+    }
+
+    private fun moveRobots(robots: List<List<Int>>, iterations: Int): List<Pair<Int, Int>> {
+      return robots.map { robot ->
         val (x, y, xVel, yVel) = robot
         Pair(
-          wrapCoord((x + xVel * iterationCount), WIDTH),
-          wrapCoord((y + yVel * iterationCount), HEIGHT),
+          wrapCoord((x + xVel * iterations), WIDTH),
+          wrapCoord((y + yVel * iterations), HEIGHT),
         )
       }
-      val ignoredX = WIDTH / 2
-      val ignoredY = HEIGHT / 2
+    }
+
+    private fun calcSafetyFactor(robots: List<Pair<Int, Int>>): Int {
       // Filter out ignored coords
-      val safetyFactor =
-        movedRobots.filter { robot -> robot.first != ignoredX && robot.second != ignoredY }.groupBy { robot ->
-          // Group into 4 quadrants based on whether they're below ignore coords
-          Pair(robot.first < ignoredX, robot.second < ignoredY)
-          // Multiply each robot count together
-        }.values.fold(1) { acc, groupedRobots ->
-          acc * groupedRobots.size
-        }
+      return robots.filter { robot -> robot.first != IGNORED_X && robot.second != IGNORED_Y }.groupBy { robot ->
+        // Group into 4 quadrants based on whether they're below ignore coords
+        Pair(robot.first < IGNORED_X, robot.second < IGNORED_Y)
+        // Multiply each robot count together
+      }.values.fold(1) { acc, groupedRobots ->
+        acc * groupedRobots.size
+      }
+    }
+
+
+    fun solvePartOne() {
+      val robots = getRobots() ?: return
+      val movedRobots = moveRobots(robots, 100)
+      val safetyFactor = calcSafetyFactor(movedRobots)
       println("Result: %s".format(safetyFactor))
     }
 
     fun drawRobotsToImage() {
-      val input = Utils.readLines("/inputs/day14.txt") ?: return
-      var robots = input.map { robot ->
-        // Get all digits in the row
-        val matches = robotCoordsRegex.findAll(robot)
-        val values = ArrayList<Int>()
-        for (match in matches) {
-          values.add(match.value.toInt())
-        }
-        values
-      }
+      var robots = getRobots() ?: return
       var iteration = 0
       // Create new image for each iteration and have puny human manually scan through for image
       while (true) {
@@ -90,9 +92,37 @@ class Day14 {
         iteration++
       }
     }
+
+    fun findLowestSafetyFactor() {
+      val robots = getRobots() ?: return
+      // Find the lowest safety factor, because safety factor is lowest when robots are grouped up, which they will be for the tree
+      var minSafety = Pair(Integer.MAX_VALUE, -1)
+      var safestRobots = listOf<Pair<Int, Int>>()
+      // Go up to max iterations before they start another loop
+      for (i in 0..<WIDTH * HEIGHT) {
+        val movedRobots = moveRobots(robots, i)
+        val safetyFactor = calcSafetyFactor(movedRobots)
+        if (safetyFactor < minSafety.first) {
+          minSafety = Pair(safetyFactor, i)
+          safestRobots = movedRobots
+        }
+      }
+      println("Result is: %s".format(minSafety.second))
+      val robotsSet = safestRobots.toHashSet()
+      for (y in 0..<HEIGHT) {
+        for (x in 0..<WIDTH) {
+          if (robotsSet.contains(Pair(x, y))) {
+            print("#")
+          } else {
+            print(".")
+          }
+        }
+        println()
+      }
+    }
   }
 }
 
 fun main() {
-  Day14.drawRobotsToImage()
+  Day14.findLowestSafetyFactor()
 }
