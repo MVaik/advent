@@ -1,10 +1,11 @@
-import shared.Utils
+import shared.GridUtils.Companion.isPairWithinGridBounds
+import shared.Utils.Companion.readText
 
 class Day15 {
 
   companion object {
     private fun getInput(): Pair<MutableList<MutableList<Char>>, List<Pair<Int, Int>>>? {
-      val input = Utils.readText("/inputs/day15.txt") ?: return null
+      val input = readText("/inputs/day15.txt") ?: return null
       val (grid, instructions) = input.split("\r\n\r\n")
       val mappedGrid = grid.split("\r\n").map {
         it.toCharArray().toMutableList()
@@ -23,7 +24,7 @@ class Day15 {
     }
 
     private fun getExpandedInput(): Pair<MutableList<MutableList<Char>>, List<Pair<Int, Int>>>? {
-      val input = Utils.readText("/inputs/day15.txt") ?: return null
+      val input = readText("/inputs/day15.txt") ?: return null
       val (grid, instructions) = input.split("\r\n\r\n")
       // Replace chars before they get turned into arrays, simpler this way
       val mappedGrid =
@@ -66,7 +67,7 @@ class Day15 {
                 var boxCount = 1
                 var movable = true
                 var nextPos = Pair(newRow + y, newCol + x)
-                while (Utils.isPairWithinGridBounds(grid, nextPos)) {
+                while (isPairWithinGridBounds(grid, nextPos)) {
                   when (grid[nextPos.first][nextPos.second]) {
                     // If we hit the edge before we hit an empty space, the boxes are not movable and we should stop
                     '#' -> {
@@ -131,7 +132,7 @@ class Day15 {
 
     private fun canMoveBoxesVertically(grid: MutableList<MutableList<Char>>, pos: Pair<Int, Int>, y: Int): Boolean {
       val nextPos = Pair(pos.first + y, pos.second)
-      if (!Utils.isPairWithinGridBounds(grid, nextPos)) {
+      if (!isPairWithinGridBounds(grid, nextPos)) {
         return false
       }
       val nextChar = grid[nextPos.first][nextPos.second]
@@ -159,7 +160,7 @@ class Day15 {
 
     private fun moveBoxesVertically(grid: MutableList<MutableList<Char>>, pos: Pair<Int, Int>, y: Int) {
       val nextPos = Pair(pos.first + y, pos.second)
-      if (!Utils.isPairWithinGridBounds(grid, nextPos)) {
+      if (!isPairWithinGridBounds(grid, nextPos)) {
         return
       }
       val nextChar = grid[nextPos.first][nextPos.second]
@@ -215,7 +216,7 @@ class Day15 {
                   var boxPieces = 1
                   var movable = true
                   var nextPos = Pair(newRow, newCol + x)
-                  while (Utils.isPairWithinGridBounds(grid, nextPos)) {
+                  while (isPairWithinGridBounds(grid, nextPos)) {
                     when (grid[nextPos.first][nextPos.second]) {
                       // If we hit the edge before we hit an empty space, the boxes are not movable and we should stop
                       '#' -> {

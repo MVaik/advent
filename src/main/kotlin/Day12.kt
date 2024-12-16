@@ -1,3 +1,4 @@
+import shared.GridUtils
 import shared.Utils
 import kotlin.math.abs
 
@@ -30,7 +31,7 @@ class Day12 {
       counts: HashMap<String, Int> = hashMapOf("area" to 0, "perimeter" to 0)
     ): HashMap<String, Int> {
       // If we've left either the grid or our active plot, we've found one of the perimeter plots
-      if (!Utils.isPairWithinGridBounds(
+      if (!GridUtils.isPairWithinGridBounds(
           grid,
           position
         ) || grid[position.first][position.second] != plotType
@@ -45,7 +46,7 @@ class Day12 {
       }
       counts["area"] = counts["area"]!! + 1
       visitedLocations.add(position)
-      for (direction in Utils.cardinalDirections) {
+      for (direction in GridUtils.cardinalDirections) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         countAreaAndPerimeter(grid, newPos, plotType, visitedLocations, counts)
       }
@@ -60,7 +61,7 @@ class Day12 {
       data: AreaAndSides = AreaAndSides(),
       prevPos: Pair<Int, Int>? = null,
     ): AreaAndSides {
-      if (!Utils.isPairWithinGridBounds(
+      if (!GridUtils.isPairWithinGridBounds(
           grid,
           position
         ) || grid[position.first][position.second] != plotType
@@ -78,7 +79,7 @@ class Day12 {
       }
       data.incrementArea()
       visitedLocations.add(position)
-      for (direction in Utils.cardinalDirections) {
+      for (direction in GridUtils.cardinalDirections) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         countAreaAndSides(grid, newPos, plotType, visitedLocations, data, position)
       }
