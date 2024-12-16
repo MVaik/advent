@@ -1,4 +1,4 @@
-import shared.GridUtils.Companion.cardinalDirections
+import shared.GridUtils.Companion.cardinalDirectionPairs
 import shared.GridUtils.Companion.isPairWithinGridBounds
 import shared.Utils
 
@@ -21,7 +21,7 @@ class Day10 {
         foundTrailEnds.add(position)
         return
       }
-      for (direction in cardinalDirections) {
+      for (direction in cardinalDirectionPairs) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         if (isPairWithinGridBounds(grid, newPos)) {
           // Recursively find trails in each direction
@@ -44,7 +44,7 @@ class Day10 {
         return 1
       }
       var foundTrails = 0
-      for (direction in cardinalDirections) {
+      for (direction in cardinalDirectionPairs) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         if (isPairWithinGridBounds(grid, newPos)) {
           // Count all the valid trails found from this direction
@@ -62,7 +62,7 @@ class Day10 {
           if (input[row][col] == '0') {
             // Keep track of all the unique 9's we find, as we don't want to count each path that leads to the same 9
             val foundTrails = mutableSetOf<Pair<Int, Int>>()
-            for (direction in cardinalDirections) {
+            for (direction in cardinalDirectionPairs) {
               val newPoint = Pair(row + direction.first, col + direction.second)
               if (isPairWithinGridBounds(input, newPoint)) {
                 addUniqueTrails(input, newPoint, 1, foundTrails)
@@ -82,7 +82,7 @@ class Day10 {
       for (row in input.indices) {
         for (col in input[row].indices) {
           if (input[row][col] == '0') {
-            for (direction in cardinalDirections) {
+            for (direction in cardinalDirectionPairs) {
               val newPoint = Pair(row + direction.first, col + direction.second)
               if (isPairWithinGridBounds(input, newPoint)) {
                 // Sum all valid trails regardless of duplicate 9's

@@ -46,7 +46,7 @@ class Day12 {
       }
       counts["area"] = counts["area"]!! + 1
       visitedLocations.add(position)
-      for (direction in GridUtils.cardinalDirections) {
+      for (direction in GridUtils.cardinalDirectionPairs) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         countAreaAndPerimeter(grid, newPos, plotType, visitedLocations, counts)
       }
@@ -79,7 +79,7 @@ class Day12 {
       }
       data.incrementArea()
       visitedLocations.add(position)
-      for (direction in GridUtils.cardinalDirections) {
+      for (direction in GridUtils.cardinalDirectionPairs) {
         val newPos = Pair(position.first + direction.first, position.second + direction.second)
         countAreaAndSides(grid, newPos, plotType, visitedLocations, data, position)
       }
