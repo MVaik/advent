@@ -2,6 +2,7 @@ package shared
 
 class Utils {
   companion object {
+    val NUMBER_REGEX = Regex("\\d+")
 
     fun readLines(path: String): List<String>? {
       return this::class.java.getResourceAsStream(path)?.bufferedReader()?.readLines()
