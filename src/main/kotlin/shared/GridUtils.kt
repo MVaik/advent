@@ -1,6 +1,9 @@
 package shared
 
-data class Position(val row: Int, val col: Int)
+data class Position(val row: Int, val col: Int) {
+  constructor(size: Int) : this(size, size)
+}
+
 data class Direction(val y: Int, val x: Int)
 
 data class DirectedPosition(val position: Position, val direction: Direction)
@@ -36,6 +39,11 @@ class GridUtils {
     @JvmName("CellWithinBoundsStringList")
     fun isCellWithinGridBounds(grid: List<String>, cell: GridCell): Boolean {
       return cell.pos.row >= 0 && cell.pos.row < grid.size && cell.pos.col >= 0 && cell.pos.col < grid[0].length
+    }
+
+    @JvmName("CellWithinBoundsIntSize")
+    fun isCellWithinGridBounds(gridSize: Int, cell: GridCell): Boolean {
+      return cell.pos.row in 0..<gridSize && cell.pos.col in 0..<gridSize
     }
 
     @JvmName("PairWithinBoundsStringList")
@@ -75,6 +83,14 @@ class GridUtils {
       for (row in this.indices) {
         for (col in this[row].indices) {
           action(this[row][col], row, col)
+        }
+      }
+    }
+
+    fun IntRange.walkImaginaryGrid(action: (rowIndex: Int, colIndex: Int) -> Unit) {
+      for (row in this) {
+        for (col in this) {
+          action(row, col)
         }
       }
     }
