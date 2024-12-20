@@ -11,5 +11,9 @@ class Utils {
     fun readText(path: String): String? {
       return this::class.java.getResourceAsStream(path)?.bufferedReader()?.readText()
     }
+
+    fun printLn(vararg input: Any) {
+      println(input.joinToString(", "))
+    }
   }
 }

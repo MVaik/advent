@@ -1,63 +1,64 @@
 import shared.Utils
 import shared.Utils.Companion.NUMBER_REGEX
+import shared.Utils.Companion.printLn
 import kotlin.math.pow
 
 class Day17 {
   companion object {
 
-    fun getComboOperand(operand: Long, registers: HashMap<Int, Long>): Long {
+    private fun getComboOperand(operand: Long, a: Long, b: Long, c: Long): Long {
       return when (operand) {
         0L, 1L, 2L, 3L -> operand
-        4L -> registers[0]!!
-        5L -> registers[1]!!
-        else -> registers[2]!!
+        4L -> a
+        5L -> b
+        else -> c
       }
     }
 
-    fun getOutput(numbers: List<Long>, registers: HashMap<Int, Long>, expectedFirstOutput: Long? = null): String {
+    private fun getOutput(numbers: List<Long>, registers: HashMap<Int, Long>): List<Long> {
       var pointer = 0L
-      var output = ""
+      val output = mutableListOf<Long>()
+      var a = registers[0]!!
+      var b = registers[1]!!
+      var c = registers[2]!!
       while (pointer < numbers.size) {
         val code = numbers[pointer.toInt()]
         val operandNum = numbers[pointer.toInt() + 1]
         when (code) {
           0L -> {
-            registers[0] = registers[0]!! / 2.0.pow(getComboOperand(operandNum, registers).toDouble()).toLong()
+            a /= 2.0.pow(getComboOperand(operandNum, a, b, c).toDouble()).toLong()
           }
 
           1L -> {
-            registers[1] = registers[1]!!.xor(operandNum)
+            b = b.xor(operandNum)
           }
 
           2L -> {
-            registers[1] = getComboOperand(operandNum, registers) % 8
+            b = getComboOperand(operandNum, a, b, c) % 8
           }
 
           3L -> {
-            if (registers[0] != 0L) {
+            if (a != 0L) {
               pointer = operandNum
               continue
             }
           }
 
           4L -> {
-            registers[1] = registers[1]!!.xor(registers[2]!!)
+            b = b.xor(c)
           }
 
           5L -> {
-            val outputNum = getComboOperand(operandNum, registers) % 8
-            output += "%s,".format(outputNum)
-            if (expectedFirstOutput != null && output.isEmpty() && outputNum != expectedFirstOutput) {
-              break
-            }
+            val outputNum = getComboOperand(operandNum, a, b, c) % 8
+            output.add(outputNum)
           }
 
           6L -> {
-            registers[1] = registers[0]!! / 2.0.pow(getComboOperand(operandNum, registers).toDouble()).toLong()
+            b = a / 2.0.pow(getComboOperand(operandNum, a, b, c).toDouble()).toLong()
           }
 
           7L -> {
-            registers[2] = registers[0]!! / 2.0.pow(getComboOperand(operandNum, registers).toDouble()).toLong()
+            c = a / 2.0.pow(getComboOperand(operandNum, a, b, c).toDouble()).toLong()
           }
         }
         pointer += 2
@@ -78,30 +79,40 @@ class Day17 {
       println("Result: $output")
     }
 
+
     fun solvePartTwo() {
       val input = Utils.readText("/inputs/day17.txt") ?: return
       val registers = HashMap<Int, Long>()
       val numbers = NUMBER_REGEX.findAll(input).map { it.value.toLong() }.toList()
       for (num in 0..<3) {
-        registers[num] = numbers[num]
+        registers[num] = 0L
       }
+
       val restOfNumbers = numbers.subList(3, numbers.size)
-      val numbersString = restOfNumbers.joinToString(",") + ","
-      var num = 0L
-      while (true) {
-        registers[0] = num
-        val output = getOutput(restOfNumbers, registers, restOfNumbers[0])
-        if (output == numbersString) {
-          break
+
+      val queue = ArrayDeque<Pair<Long, Int>>()
+      queue.add(Pair(0L, 1))
+      val possibleResults = mutableSetOf<Long>()
+      while (queue.size > 0) {
+        val curr = queue.removeFirst()
+        for (i in 0..<8) {
+          // Bit shifting magic, last 3 bits determine output
+          val newA = (curr.first shl 3) or i.toLong()
+          registers[0] = newA
+          val output = getOutput(restOfNumbers, registers)
+          if (output == restOfNumbers) {
+            possibleResults.add(newA)
+          } else if (output == restOfNumbers.subList(restOfNumbers.size - curr.second, restOfNumbers.size)) {
+            queue.add(Pair(newA, curr.second + 1))
+          }
         }
-        num++
       }
-      println("Result: $num")
+      val result = possibleResults.min()
+      printLn(result)
     }
   }
 }
 
 fun main() {
   Day17.solvePartTwo()
-
 }
