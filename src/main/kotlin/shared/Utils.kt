@@ -12,7 +12,7 @@ class Utils {
       return this::class.java.getResourceAsStream(path)?.bufferedReader()?.readText()
     }
 
-    fun printLn(vararg input: Any) {
+    fun ePrint(vararg input: Any?) {
       println(input.joinToString(", "))
     }
   }

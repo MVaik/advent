@@ -1,6 +1,6 @@
 import shared.Utils
 import shared.Utils.Companion.NUMBER_REGEX
-import shared.Utils.Companion.printLn
+import shared.Utils.Companion.ePrint
 import kotlin.math.pow
 
 class Day17 {
@@ -108,7 +108,7 @@ class Day17 {
         }
       }
       val result = possibleResults.min()
-      printLn(result)
+      ePrint(result)
     }
   }
 }

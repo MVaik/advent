@@ -9,11 +9,12 @@ data class Direction(val y: Int, val x: Int)
 data class DirectedPosition(val position: Position, val direction: Direction)
 
 
-class GridCell(
+open class GridCell(
   val pos: Position,
   val direction: Direction = Direction(0, 0),
   val path: List<GridCell>? = null,
-  val value: Int = -1
+  val value: Int = -1,
+  val visited: Set<Position>? = null
 ) {
   fun addToPath(element: GridCell): List<GridCell> {
     if (path != null) {
@@ -22,6 +23,10 @@ class GridCell(
     return listOf(element)
   }
 }
+
+class GridCellWithData<T>(
+  pos: Position, direction: Direction = Direction(0, 0), var data: T, path: List<GridCell>? = null, value: Int = -1,
+) : GridCell(pos, direction, path, value)
 
 class GridUtils {
   companion object {
@@ -34,6 +39,13 @@ class GridUtils {
       Direction(1, 0), Direction(0, -1)
     )
     val cardinalDirectionOpposites =
+      mapOf(
+        Direction(-1, 0) to Direction(1, 0),
+        Direction(1, 0) to Direction(-1, 0),
+        Direction(0, -1) to Direction(0, 1),
+        Direction(0, 1) to Direction(0, -1)
+      )
+    val cardinalDirectionOppositePairs =
       mapOf(Pair(-1, 0) to Pair(1, 0), Pair(1, 0) to Pair(-1, 0), Pair(0, -1) to Pair(0, 1), Pair(0, 1) to Pair(0, -1))
 
     @JvmName("CellWithinBoundsStringList")
@@ -44,6 +56,11 @@ class GridUtils {
     @JvmName("CellWithinBoundsIntSize")
     fun isCellWithinGridBounds(gridSize: Int, cell: GridCell): Boolean {
       return cell.pos.row in 0..<gridSize && cell.pos.col in 0..<gridSize
+    }
+
+    @JvmName("PositionWithinBoundsStringList")
+    fun isPositionWithinGridBounds(grid: List<String>, position: Position): Boolean {
+      return position.row >= 0 && position.row < grid.size && position.col >= 0 && position.col < grid[0].length
     }
 
     @JvmName("PairWithinBoundsStringList")
