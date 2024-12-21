@@ -14,7 +14,7 @@ open class GridCell(
   val direction: Direction = Direction(0, 0),
   val path: List<GridCell>? = null,
   val value: Int = -1,
-  val visited: Set<Position>? = null
+  val visited: MutableSet<Position>? = null
 ) {
   fun addToPath(element: GridCell): List<GridCell> {
     if (path != null) {
@@ -25,8 +25,13 @@ open class GridCell(
 }
 
 class GridCellWithData<T>(
-  pos: Position, direction: Direction = Direction(0, 0), var data: T, path: List<GridCell>? = null, value: Int = -1,
-) : GridCell(pos, direction, path, value)
+  pos: Position,
+  direction: Direction = Direction(0, 0),
+  var data: T,
+  path: List<GridCell>? = null,
+  value: Int = -1,
+  visited: MutableSet<Position>? = null
+) : GridCell(pos, direction, path, value, visited)
 
 class GridUtils {
   companion object {
