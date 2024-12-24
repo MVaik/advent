@@ -2,6 +2,10 @@ package shared
 
 data class Position(val row: Int, val col: Int) {
   constructor(size: Int) : this(size, size)
+
+  operator fun plus(dir: Direction): Position {
+    return Position(row + dir.y, col + dir.x)
+  }
 }
 
 data class Direction(val y: Int, val x: Int)
