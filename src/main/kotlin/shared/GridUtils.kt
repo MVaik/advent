@@ -6,6 +6,25 @@ data class Position(val row: Int, val col: Int) {
   operator fun plus(dir: Direction): Position {
     return Position(row + dir.y, col + dir.x)
   }
+
+  operator fun minus(pos: Position): Position {
+    return Position(row - pos.row, col - pos.col)
+  }
+
+  fun neighbours() =
+    listOf(
+      Position(row - 1, col),
+      Position(row + 1, col),
+      Position(row, col - 1),
+      Position(row, col + 1),
+    )
+
+  companion object {
+    val UP = Position(-1, 0)
+    val RIGHT = Position(0, 1)
+    val DOWN = Position(1, 0)
+    val LEFT = Position(0, -1)
+  }
 }
 
 data class Direction(val y: Int, val x: Int)
