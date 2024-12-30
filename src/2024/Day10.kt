@@ -1,8 +1,8 @@
 package `2024`
 
-import shared.GridUtils.Companion.cardinalDirectionPairs
-import shared.GridUtils.Companion.isPairWithinGridBounds
-import shared.Utils
+import shared.kotlin.GridUtils.Companion.cardinalDirectionPairs
+import shared.kotlin.GridUtils.Companion.isPairWithinGridBounds
+import shared.kotlin.Utils
 
 class Day10 {
   companion object {

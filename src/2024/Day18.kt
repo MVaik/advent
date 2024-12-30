@@ -1,7 +1,7 @@
 package `2024`
 
-import shared.*
-import shared.Utils.Companion.NUMBER_REGEX
+import shared.kotlin.*
+import shared.kotlin.Utils.Companion.NUMBER_REGEX
 
 class Day18 {
   companion object {

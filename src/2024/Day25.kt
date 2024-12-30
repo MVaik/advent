@@ -1,7 +1,7 @@
 package `2024`
 
-import shared.GridUtils.Companion.walkGrid
-import shared.Utils
+import shared.kotlin.GridUtils.Companion.walkGrid
+import shared.kotlin.Utils
 
 class Day25 {
   companion object {

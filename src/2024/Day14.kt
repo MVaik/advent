@@ -1,6 +1,6 @@
 package `2024`
 
-import shared.Utils
+import shared.kotlin.Utils
 import java.awt.Color
 import java.awt.image.BufferedImage
 import java.io.File

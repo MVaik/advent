@@ -1,6 +1,6 @@
 package `2024`
 
-import shared.Utils
+import shared.kotlin.Utils
 import kotlin.math.pow
 
 class Day7 {

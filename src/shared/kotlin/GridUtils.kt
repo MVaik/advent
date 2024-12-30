@@ -1,4 +1,4 @@
-package shared
+package shared.kotlin
 
 data class Position(val row: Int, val col: Int) {
   constructor(size: Int) : this(size, size)

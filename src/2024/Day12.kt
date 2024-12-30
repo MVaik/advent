@@ -1,7 +1,7 @@
 package `2024`
 
-import shared.GridUtils
-import shared.Utils
+import shared.kotlin.GridUtils
+import shared.kotlin.Utils
 import kotlin.math.abs
 
 data class AreaAndSides(

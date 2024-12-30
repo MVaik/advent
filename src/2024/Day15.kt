@@ -1,7 +1,7 @@
 package `2024`
 
-import shared.GridUtils.Companion.isPairWithinGridBounds
-import shared.Utils.Companion.readText
+import shared.kotlin.GridUtils.Companion.isPairWithinGridBounds
+import shared.kotlin.Utils.Companion.readText
 
 class Day15 {
 

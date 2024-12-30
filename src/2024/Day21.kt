@@ -1,6 +1,6 @@
 package `2024`
 
-import shared.*
+import shared.kotlin.*
 
 class Day21 {
   companion object {

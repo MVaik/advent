@@ -1,8 +1,8 @@
 package `2024`
 
-import shared.Utils
-import shared.Utils.Companion.NUMBER_REGEX
-import shared.Utils.Companion.ePrint
+import shared.kotlin.Utils
+import shared.kotlin.Utils.Companion.NUMBER_REGEX
+import shared.kotlin.Utils.Companion.ePrint
 import kotlin.math.pow
 
 class Day17 {

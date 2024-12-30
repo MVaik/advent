@@ -1,12 +1,12 @@
 package `2024`
 
-import shared.GridCell
-import shared.GridUtils
-import shared.GridUtils.Companion.cardinalDirectionOpposites
-import shared.GridUtils.Companion.cardinalDirections
-import shared.GridUtils.Companion.walkGrid
-import shared.Position
-import shared.Utils
+import shared.kotlin.GridCell
+import shared.kotlin.GridUtils
+import shared.kotlin.GridUtils.Companion.cardinalDirectionOpposites
+import shared.kotlin.GridUtils.Companion.cardinalDirections
+import shared.kotlin.GridUtils.Companion.walkGrid
+import shared.kotlin.Position
+import shared.kotlin.Utils
 import kotlin.math.abs
 
 class Day20 {
