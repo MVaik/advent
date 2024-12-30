@@ -1,3 +1,5 @@
+package `2024`
+
 import kotlin.math.abs
 import kotlin.streams.toList
 
@@ -5,7 +7,7 @@ class Day2 {
   companion object {
     private var inputDelimiter = " "
     private fun readInput(): ArrayList<List<Int>> {
-      val inputStream = this::class.java.getResourceAsStream("/inputs/day2.txt")?.bufferedReader()?.readLines()
+      val inputStream = this::class.java.getResourceAsStream("/inputs/2024/day2.txt")?.bufferedReader()?.readLines()
       val result = ArrayList<List<Int>>()
       inputStream?.forEach {
         val parsedInts = it.split(inputDelimiter).stream().mapToInt(Integer::parseInt).toList()

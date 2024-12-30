@@ -1,9 +1,11 @@
+package `2024`
+
 import shared.Utils
 
 class Day8 {
   companion object {
     fun countAntiNodes() {
-      val input = Utils.readLines("/inputs/day8.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day8.txt") ?: return
 
       val visitedGrid = HashMap<Char, MutableSet<Pair<Int, Int>>>()
       for (row in input.indices) {
@@ -44,7 +46,7 @@ class Day8 {
     }
 
     fun countAnyPositionAntiNodes() {
-      val input = Utils.readLines("/inputs/day8.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day8.txt") ?: return
 
       val visitedGrid = HashMap<Char, MutableSet<Pair<Int, Int>>>()
       for (row in input.indices) {

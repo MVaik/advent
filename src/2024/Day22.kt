@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.Utils
 
 class Day22 {
@@ -24,13 +26,13 @@ class Day22 {
     }
 
     fun solvePartOne() {
-      val input = Utils.readLines("/inputs/day22.txt")?.map { it.toLong() } ?: return
+      val input = Utils.readLines("/inputs/2024/day22.txt")?.map { it.toLong() } ?: return
       val sum = input.fold(0L) { acc, value -> acc + calcNthSecretNumber(value, 2000) }
       println("Result: $sum")
     }
 
     fun solvePartTwo() {
-      val input = Utils.readLines("/inputs/day22.txt")?.map { it.toLong() } ?: return
+      val input = Utils.readLines("/inputs/2024/day22.txt")?.map { it.toLong() } ?: return
       val prices = input.map { baseVal ->
         // Create list of lists containing secret number, price and diff from prev price
         val data = mutableListOf(listOf(baseVal, baseVal % 10, null))

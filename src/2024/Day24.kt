@@ -1,9 +1,11 @@
+package `2024`
+
 import shared.Utils
 
 class Day24 {
   companion object {
     private fun getInput(): Pair<MutableMap<String, Int>, List<List<String>>>? {
-      val (initialValues, transformations) = Utils.readText("/inputs/day24.txt")?.split("\r\n\r\n")
+      val (initialValues, transformations) = Utils.readText("/inputs/2024/day24.txt")?.split("\r\n\r\n")
         ?: return null
       val values = mutableMapOf<String, Int>()
       val parsedTransformations = mutableListOf<List<String>>()

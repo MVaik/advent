@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.Utils
 import java.awt.Color
 import java.awt.image.BufferedImage
@@ -20,7 +22,7 @@ class Day14 {
     }
 
     private fun getRobots(): List<ArrayList<Int>>? {
-      val input = Utils.readLines("/inputs/day14.txt") ?: return null
+      val input = Utils.readLines("/inputs/2024/day14.txt") ?: return null
       return input.map { robot ->
         // Get all digits in the row
         val matches = robotCoordsRegex.findAll(robot)

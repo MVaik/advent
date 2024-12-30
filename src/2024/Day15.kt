@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.GridUtils.Companion.isPairWithinGridBounds
 import shared.Utils.Companion.readText
 
@@ -5,7 +7,7 @@ class Day15 {
 
   companion object {
     private fun getInput(): Pair<MutableList<MutableList<Char>>, List<Pair<Int, Int>>>? {
-      val input = readText("/inputs/day15.txt") ?: return null
+      val input = readText("/inputs/2024/day15.txt") ?: return null
       val (grid, instructions) = input.split("\r\n\r\n")
       val mappedGrid = grid.split("\r\n").map {
         it.toCharArray().toMutableList()
@@ -24,7 +26,7 @@ class Day15 {
     }
 
     private fun getExpandedInput(): Pair<MutableList<MutableList<Char>>, List<Pair<Int, Int>>>? {
-      val input = readText("/inputs/day15.txt") ?: return null
+      val input = readText("/inputs/2024/day15.txt") ?: return null
       val (grid, instructions) = input.split("\r\n\r\n")
       // Replace chars before they get turned into arrays, simpler this way
       val mappedGrid =

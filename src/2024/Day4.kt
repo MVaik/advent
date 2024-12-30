@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.Utils
 
 class Day4 {
@@ -15,7 +17,7 @@ class Day4 {
       mapOf(Pair(-1, -1) to Pair(1, 1), Pair(-1, 1) to Pair(1, -1))
 
     fun findXmasOccurrences() {
-      val input = Utils.readLines("/inputs/day4.txt")
+      val input = Utils.readLines("/inputs/2024/day4.txt")
       var count = 0
       if (input != null) {
         for (row in input.indices) {
@@ -50,7 +52,7 @@ class Day4 {
     }
 
     fun findXShapeOccurrences() {
-      val input = Utils.readLines("/inputs/day4.txt")
+      val input = Utils.readLines("/inputs/2024/day4.txt")
       var count = 0
       if (input != null) {
         for (row in input.indices) {

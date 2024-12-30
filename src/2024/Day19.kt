@@ -1,9 +1,11 @@
+package `2024`
+
 import shared.Utils
 
 class Day19 {
   companion object {
     private fun getInput(): Pair<Set<String>, Set<String>>? {
-      val input = Utils.readText("/inputs/day19.txt") ?: return null
+      val input = Utils.readText("/inputs/2024/day19.txt") ?: return null
       val (towelsRow, designs) = input.split("\r\n\r\n")
       val towels = towelsRow.split(", ").toSet()
       val designsArr = designs.split("\r\n").toSet()

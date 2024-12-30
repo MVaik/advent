@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.GridUtils
 import shared.Utils
 import kotlin.math.abs
@@ -87,7 +89,7 @@ class Day12 {
     }
 
     fun calculateFencePrice() {
-      val input = Utils.readLines("/inputs/day12_example.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day12_example.txt") ?: return
       val visitedLocations = mutableSetOf<Pair<Int, Int>>()
       var price = 0
       for (row in input.indices) {
@@ -110,7 +112,7 @@ class Day12 {
     }
 
     fun calculateFencePriceWithSides() {
-      val input = Utils.readLines("/inputs/day12.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day12.txt") ?: return
       val visitedLocations = mutableSetOf<Pair<Int, Int>>()
       var price = 0
       for (row in input.indices) {

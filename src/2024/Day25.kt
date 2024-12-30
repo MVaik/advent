@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.GridUtils.Companion.walkGrid
 import shared.Utils
 
@@ -5,7 +7,7 @@ class Day25 {
   companion object {
     private const val HEIGHT = 5
     fun solvePartOne() {
-      val input = Utils.readText("/inputs/day25.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day25.txt") ?: return
 
       val locksAndKeys = input.split("\r\n\r\n").map { it.split("\r\n") }
       val locks = mutableSetOf<List<Int>>()

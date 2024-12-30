@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.Utils
 
 
@@ -34,7 +36,7 @@ class Day23 {
     }
 
     fun solvePartOne() {
-      val input = Utils.readLines("/inputs/day23.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day23.txt") ?: return
       val connections = HashMap<String, MutableSet<String>>()
       for (connection in input) {
         val (firstComputer, secondComputer) = connection.split("-")
@@ -64,7 +66,7 @@ class Day23 {
     }
 
     fun solvePartTwo() {
-      val input = Utils.readLines("/inputs/day23.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day23.txt") ?: return
       val connections = HashMap<String, MutableSet<String>>()
       for (connection in input) {
         val (firstComputer, secondComputer) = connection.split("-")

@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.*
 
 class Day21 {
@@ -103,7 +105,7 @@ class Day21 {
     }
 
     fun solvePartOne() {
-      val input = Utils.readLines("/inputs/day21.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day21.txt") ?: return
       var complexitiesSum = 0L
       for (code in input) {
         val totalDirections = getCost(code, 26)

@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.Utils
 
 class Day3 {
@@ -9,7 +11,7 @@ class Day3 {
       )
 
     fun addMultiplications(enableOperators: Boolean) {
-      val input = Utils.readText("/inputs/day3.txt")
+      val input = Utils.readText("/inputs/2024/day3.txt")
       var result = 0
       if (input != null) {
         val matches = validMultiplicationRegex.findAll(input)

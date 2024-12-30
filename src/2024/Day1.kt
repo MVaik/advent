@@ -1,3 +1,5 @@
+package `2024`
+
 import kotlin.math.abs
 
 
@@ -6,7 +8,7 @@ class Day1 {
   companion object {
     private var inputDelimiter = "   "
     fun readInput(): Pair<ArrayList<Int>, ArrayList<Int>> {
-      val inputStream = this::class.java.getResourceAsStream("/inputs/day1.txt")?.bufferedReader()?.readLines()
+      val inputStream = this::class.java.getResourceAsStream("/inputs/2024/day1.txt")?.bufferedReader()?.readLines()
       val firstArr = ArrayList<Int>()
       val secondArr = ArrayList<Int>()
       inputStream?.forEach {

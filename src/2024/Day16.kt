@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.*
 import shared.GridUtils.Companion.cardinalDirectionPairs
 import shared.GridUtils.Companion.cardinalDirections
@@ -43,7 +45,7 @@ class Day16 {
 
 
     fun solvePartOne() {
-      val input = Utils.readLines("/inputs/day16.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day16.txt") ?: return
       var sum = Int.MAX_VALUE
       val baseDirection = Pair(0, 1)
       input.walkGrid { char, row, col, grid ->
@@ -91,7 +93,7 @@ class Day16 {
     }
 
     fun solvePartTwo() {
-      val input = Utils.readLines("/inputs/day16.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day16.txt") ?: return
       var sum = Int.MAX_VALUE
       val baseDirection = Direction(0, 1)
       var paths = mutableSetOf<Position>()

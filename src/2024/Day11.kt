@@ -1,9 +1,11 @@
+package `2024`
+
 import shared.Utils
 
 class Day11 {
   companion object {
     fun watchStones(blinkCount: Int) {
-      val input = Utils.readText("/inputs/day11.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day11.txt") ?: return
       var nums = input.split(" ").fold(HashMap<String, Long>()) { acc, num ->
         acc[num] = acc.getOrDefault(num, 0) + 1
         acc

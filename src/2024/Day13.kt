@@ -1,9 +1,11 @@
+package `2024`
+
 import shared.Utils
 
 class Day13 {
   companion object {
     fun findCheapestPrizeAcquisition(solveFirst: Boolean = false) {
-      val input = Utils.readText("/inputs/day13.txt")?.split("\n\n") ?: return
+      val input = Utils.readText("/inputs/2024/day13.txt")?.split("\n\n") ?: return
       // Get x, y and result values via regex
       val inputRegex = Regex("(?<x>(?<=X\\+)\\d+)|(?<y>(?<=Y\\+)\\d+)|(?<result>\\d+)", RegexOption.MULTILINE)
       val problems = input.map {

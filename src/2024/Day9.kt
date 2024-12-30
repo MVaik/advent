@@ -1,9 +1,11 @@
+package `2024`
+
 import shared.Utils
 
 class Day9 {
   companion object {
     fun fragmentDisk() {
-      val input = Utils.readText("/inputs/day9.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day9.txt") ?: return
       val space = ArrayList<Int>()
       for (i in input.indices) {
         val num = input[i].digitToInt()
@@ -40,7 +42,7 @@ class Day9 {
     }
 
     fun fragmentDiskAsBlocks() {
-      val input = Utils.readText("/inputs/day9.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day9.txt") ?: return
       val space = mutableListOf<Pair<Int, Int>>()
       for (i in input.indices) {
         val num = input[i].digitToInt()

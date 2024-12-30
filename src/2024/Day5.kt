@@ -1,9 +1,11 @@
+package `2024`
+
 import shared.Utils
 
 class Day5 {
   companion object {
     fun orderAndCountUpdates() {
-      val input = Utils.readLines("/inputs/day5.txt")
+      val input = Utils.readLines("/inputs/2024/day5.txt")
       var correctlyOrderedMiddleSum = 0
       var inCorrectlyOrderedMiddleSum = 0
       if (input != null) {

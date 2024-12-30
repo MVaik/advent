@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.GridCell
 import shared.GridUtils
 import shared.GridUtils.Companion.cardinalDirectionOpposites
@@ -12,7 +14,7 @@ class Day20 {
 
 
     fun solvePartOne() {
-      val input = Utils.readLines("/inputs/day20.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day20.txt") ?: return
       var base: GridCell? = null
       val walls = mutableSetOf<Position>()
       val visited = mutableSetOf<Position>()
@@ -93,7 +95,7 @@ class Day20 {
 
 
     fun solvePartTwo() {
-      val input = Utils.readLines("/inputs/day20.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day20.txt") ?: return
       var base: GridCell? = null
       val visited = mutableSetOf<Position>()
       // Get uncheated path

@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.Utils
 
 class Day6 {
@@ -10,7 +12,7 @@ class Day6 {
     )
 
     fun countVisitedCells() {
-      val input = Utils.readLines("/inputs/day6.txt")
+      val input = Utils.readLines("/inputs/2024/day6.txt")
       val visitedGrid = HashMap<Int, MutableSet<Int>>()
       if (input == null) {
         return
@@ -56,7 +58,7 @@ class Day6 {
     }
 
     fun findLoopingCells() {
-      val input = Utils.readLines("/inputs/day6.txt")
+      val input = Utils.readLines("/inputs/2024/day6.txt")
       val visitedGrid = HashMap<Int, MutableSet<Int>>()
       var count = 0
       if (input == null) {

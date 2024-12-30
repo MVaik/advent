@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.*
 import shared.Utils.Companion.NUMBER_REGEX
 
@@ -6,7 +8,7 @@ class Day18 {
     private const val GRID_SIZE = 70
     private const val BYTES_COUNT = 1024
     fun solvePartOne() {
-      val input = Utils.readText("/inputs/day18.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day18.txt") ?: return
       val nums = NUMBER_REGEX.findAll(input).toList()
       val blockedPaths = mutableSetOf<Position>()
 
@@ -54,7 +56,7 @@ class Day18 {
     }
 
     fun solvePartTwo() {
-      val input = Utils.readText("/inputs/day18.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day18.txt") ?: return
       val nums = NUMBER_REGEX.findAll(input).toList()
       val blockedPaths = mutableSetOf<Position>()
       // Try reaching the end again after each blockage

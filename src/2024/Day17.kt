@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.Utils
 import shared.Utils.Companion.NUMBER_REGEX
 import shared.Utils.Companion.ePrint
@@ -68,7 +70,7 @@ class Day17 {
 
 
     fun solvePartOne() {
-      val input = Utils.readText("/inputs/day17.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day17.txt") ?: return
       val registers = HashMap<Int, Long>()
       val numbers = NUMBER_REGEX.findAll(input).map { it.value.toLong() }.toList()
       for (num in 0..<3) {
@@ -81,7 +83,7 @@ class Day17 {
 
 
     fun solvePartTwo() {
-      val input = Utils.readText("/inputs/day17.txt") ?: return
+      val input = Utils.readText("/inputs/2024/day17.txt") ?: return
       val registers = HashMap<Int, Long>()
       val numbers = NUMBER_REGEX.findAll(input).map { it.value.toLong() }.toList()
       for (num in 0..<3) {

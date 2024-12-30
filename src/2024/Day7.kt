@@ -1,10 +1,12 @@
+package `2024`
+
 import shared.Utils
 import kotlin.math.pow
 
 class Day7 {
   companion object {
     fun sumTrueCalculations(includeConcat: Boolean = false) {
-      val input = Utils.readLines("/inputs/day7.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day7.txt") ?: return
       var sum = 0L
       val operators = if (includeConcat) arrayOf('+', '*', "||") else arrayOf('+', '*')
       for (row in input) {

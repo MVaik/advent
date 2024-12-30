@@ -1,3 +1,5 @@
+package `2024`
+
 import shared.GridUtils.Companion.cardinalDirectionPairs
 import shared.GridUtils.Companion.isPairWithinGridBounds
 import shared.Utils
@@ -55,7 +57,7 @@ class Day10 {
     }
 
     fun sumUniqueTrails() {
-      val input = Utils.readLines("/inputs/day10.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day10.txt") ?: return
       var sum = 0
       for (row in input.indices) {
         for (col in input[row].indices) {
@@ -77,7 +79,7 @@ class Day10 {
     }
 
     fun sumAllTrails() {
-      val input = Utils.readLines("/inputs/day10.txt") ?: return
+      val input = Utils.readLines("/inputs/2024/day10.txt") ?: return
       var sum = 0
       for (row in input.indices) {
         for (col in input[row].indices) {
