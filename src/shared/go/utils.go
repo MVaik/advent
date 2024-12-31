@@ -16,10 +16,6 @@ func ReadString(input string) string {
 }
 
 func ReadLines(input string) []string {
-	b, err := os.ReadFile(input)
-	if err != nil {
-		fmt.Print(err)
-	}
 
-	return strings.Split(string(b), "\n")
+	return strings.Split(ReadString(input), "\n")
 }
