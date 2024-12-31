@@ -15,7 +15,11 @@ func ReadString(input string) string {
 	return string(b)
 }
 
-func ReadLines(input string) []string {
+func ReadLines(input string, separator string) []string {
+	if len(separator) > 0 {
 
-	return strings.Split(ReadString(input), "\n")
+		return strings.Split(ReadString(input), separator)
+	} else {
+		return strings.Split(ReadString(input), "\r\n")
+	}
 }
