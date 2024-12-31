@@ -2,8 +2,6 @@ package main
 
 import (
 	"strconv"
-	"strings"
-	"unicode"
 
 	utils "github.com/MVaik/advent/src/shared/go"
 )
@@ -34,30 +32,16 @@ func main() {
 	partOneSum := 0
 	partTwoSum := 0
 	for _, line := range lines {
-		firstDigitIndex := strings.IndexFunc(line, unicode.IsDigit)
-		lastDigitIndex := strings.LastIndexFunc(line, unicode.IsDigit)
-		numString := ""
-		if firstDigitIndex != -1 {
-			numString += string(line[firstDigitIndex])
-		}
-		if lastDigitIndex != -1 {
-			numString += string(line[lastDigitIndex])
-		}
-		num, err := strconv.Atoi(numString)
-		if err == nil {
-			partOneSum += num
-		}
-
+		firstDigitIndex := -1
+		lastDigitIndex := -1
 		firstDigitRange := []int{-1, -1}
 		lastDigitRange := []int{-1, -1}
-		numString = ""
 
 		for i := range line {
 			j := i + 1
 			// Get slices of string and attempt matches via digits map
 			for j <= len(line) {
-				_, ok := digitMap[string(line[i:j])]
-				if ok {
+				if _, ok := digitMap[string(line[i:j])]; ok {
 					if firstDigitRange[0] == -1 {
 						firstDigitRange[0] = i
 						firstDigitRange[1] = j
@@ -67,23 +51,43 @@ func main() {
 						lastDigitRange[0] = i
 						lastDigitRange[1] = j
 					}
+
+					// Keep track of one digit indices for part 1
+					if j-1 == i {
+						if firstDigitIndex == -1 {
+							firstDigitIndex = i
+						}
+
+						if lastDigitIndex < i {
+							lastDigitIndex = i
+						}
+					}
 				}
 				j++
 			}
 		}
-
-		// Probably possible to skip this verbosity but it's fine
-		firstNum, firstNumOk := digitMap[string(line[firstDigitRange[0]:firstDigitRange[1]])]
-		secondNum, secondNumOk := digitMap[string(line[lastDigitRange[0]:lastDigitRange[1]])]
-		if firstNumOk {
-			numString += firstNum
+		partOneNumString := ""
+		if firstDigitIndex != -1 {
+			partOneNumString += string(line[firstDigitIndex])
+		}
+		if lastDigitIndex != -1 {
+			partOneNumString += string(line[lastDigitIndex])
 		}
 
-		if secondNumOk {
-			numString += secondNum
+		if num, err := strconv.Atoi(partOneNumString); err == nil {
+			partOneSum += num
 		}
-		num, err = strconv.Atoi(numString)
-		if err == nil {
+
+		partTwoNumString := ""
+		if numString, ok := digitMap[string(line[firstDigitRange[0]:firstDigitRange[1]])]; ok {
+			partTwoNumString += numString
+		}
+
+		if numString, ok := digitMap[string(line[lastDigitRange[0]:lastDigitRange[1]])]; ok {
+			partTwoNumString += numString
+		}
+
+		if num, err := strconv.Atoi(partTwoNumString); err == nil {
 			partTwoSum += num
 		}
 	}
