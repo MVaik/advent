@@ -28,7 +28,7 @@ var digitMap = map[string]string{
 }
 
 func main() {
-	lines := utils.ReadLines("../../inputs/2023/day1.txt", "")
+	lines := utils.ReadLines("../../inputs/2023/day1.txt")
 	partOneSum := 0
 	partTwoSum := 0
 	for _, line := range lines {

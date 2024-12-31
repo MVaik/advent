@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	lines := utils.ReadLines("../../inputs/2023/day2.txt", "")
+	lines := utils.ReadLines("../../inputs/2023/day2.txt")
 
 	partOneMaxCubes := map[string]int{
 		"red":   12,
