@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 )
@@ -16,4 +17,14 @@ func MatchIntsAndParse(input string) []int {
 		parsedInts = append(parsedInts, parsedInt)
 	}
 	return parsedInts
+}
+
+func MatchIntAndParse(input string) int {
+	matchedNum := NUMBER_REGEX.FindString(input)
+	parsedInt, err := strconv.Atoi(matchedNum)
+	if err != nil {
+		fmt.Printf("Failed to match and parse int from %v, err: %v", input, err)
+		return 0
+	}
+	return parsedInt
 }
