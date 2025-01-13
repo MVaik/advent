@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-var NUMBER_REGEX = regexp.MustCompile(`\d+`)
+var NUMBER_REGEX = regexp.MustCompile(`-?\d+`)
 
 func MatchIntsAndParse(input string) []int {
 	matchedNums := NUMBER_REGEX.FindAllString(input, -1)
