@@ -22,3 +22,21 @@ func FindLCMForArray(ints []int) int {
 	}
 	return result
 }
+
+func PositiveMod(a, b int) int {
+	a = a % b
+	if a >= 0 {
+		return a
+	}
+	if b < 0 {
+		return a - b
+	}
+	return a + b
+}
+
+func IntegerAbs(val int) int {
+	if val < 0 {
+		return -val
+	}
+	return val
+}
