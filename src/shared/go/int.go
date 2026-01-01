@@ -24,3 +24,19 @@ func JoinInts(ints []int) int {
 	}
 	return num
 }
+
+func ParseInt(input string) int {
+	num, err := strconv.Atoi(input)
+	if err != nil {
+		fmt.Printf("Failed to parse int %v, err: %v", input, err)
+	}
+	return num
+}
+
+func ParseIntFromByte(input byte) int {
+	num, err := strconv.Atoi(string(input))
+	if err != nil {
+		fmt.Printf("Failed to parse int %v, err: %v", input, err)
+	}
+	return num
+}
